@@ -12,7 +12,7 @@ package banco;
 public class ContaJuridica extends Conta{
     private String cnpj;
 
-    public ContaJuridica(String cnpj, String numero, String saldo, String limite) {
+    public ContaJuridica(String cnpj, String numero, double saldo, double limite) {
         super(numero, saldo, limite);
         this.cnpj = cnpj;
     }

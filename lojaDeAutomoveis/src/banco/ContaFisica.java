@@ -12,7 +12,7 @@ package banco;
 public class ContaFisica extends Conta{
     private String cpf;
 
-    public ContaFisica(String cpf, String numero, String saldo, String limite) {
+    public ContaFisica(String cpf, String numero, double saldo, double limite) {
         super(numero, saldo, limite);
         this.cpf = cpf;
     }

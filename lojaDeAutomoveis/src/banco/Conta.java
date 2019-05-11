@@ -11,10 +11,10 @@ package banco;
  */
 public class Conta {
     private String numero;
-    private String saldo;
-    private String limite;
+    private double saldo;
+    private double limite;
 
-    public Conta(String numero, String saldo, String limite) {
+    public Conta(String numero, double saldo, double limite) {
         this.numero = numero;
         this.saldo = saldo;
         this.limite = limite;
@@ -31,19 +31,19 @@ public class Conta {
         this.numero = numero;
     }
 
-    public String getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(String saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    public String getLimite() {
+    public double getLimite() {
         return limite;
     }
 
-    public void setLimite(String limite) {
+    public void setLimite(double limite) {
         this.limite = limite;
     }
 }
