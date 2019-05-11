@@ -5,6 +5,10 @@
  */
 package lojaDeAutomoveis;
 
+import banco.Conta;
+import banco.ContaFisica;
+import java.util.ArrayList;
+
 /**
  *
  * @author JAVA
@@ -16,6 +20,17 @@ public class lojaDeAutomoveis {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        
+        ArrayList<Venda> vendas = new ArrayList<Venda>();
+        
+        Endereco enderecoJoao = new Endereco("Rua das pedras","123456","Cordeiro","Recife","PE");
+        
+        ContaFisica contaJoao = new ContaFisica("123","123",100.0f,200.0f);
+        
+        //clientes.add(new Cliente("joao","M","123456",enderecoJoao,contaJoao,"1500"));
+        
+        
     }
     
 }

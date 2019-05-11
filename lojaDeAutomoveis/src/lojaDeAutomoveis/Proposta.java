@@ -10,11 +10,11 @@ package lojaDeAutomoveis;
  * @author JAVA
  */
 public class Proposta {
-    private String automovel;
+    private Automovel automovel;
     private String valor;
     private String desconto;
 
-    public Proposta(String automovel, String valor, String desconto) {
+    public Proposta(Automovel automovel, String valor, String desconto) {
         this.automovel = automovel;
         this.valor = valor;
         this.desconto = desconto;
@@ -24,11 +24,11 @@ public class Proposta {
     }
     
 
-    public String getAutomovel() {
+    public Automovel getAutomovel() {
         return automovel;
     }
 
-    public void setAutomovel(String automovel) {
+    public void setAutomovel(Automovel automovel) {
         this.automovel = automovel;
     }
 

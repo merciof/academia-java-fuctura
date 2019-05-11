@@ -5,22 +5,25 @@
  */
 package lojaDeAutomoveis;
 
+import banco.ContaJuridica;
+import java.util.ArrayList;
+
 /**
  *
  * @author JAVA
  */
 public class Loja {
 
-    private String listaAutomoveis;
-    private String endereco;
-    private String contaJuridica;
-    private String listaClientes;
-    private String listaDeVendas;
+    private ArrayList<Automovel> listaAutomoveis;
+    private Endereco endereco;
+    private ContaJuridica contaJuridica;
+    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Venda> listaDeVendas;
 
     public Loja() {
     }
     
-    public Loja(String listaAutomoveis, String endereco, String contaJuridica, String listaClientes, String listaDeVendas) {
+    public Loja(ArrayList<Automovel> listaAutomoveis, Endereco endereco, ContaJuridica contaJuridica, ArrayList<Cliente> listaClientes, ArrayList<Venda> listaDeVendas) {
         this.listaAutomoveis = listaAutomoveis;
         this.endereco = endereco;
         this.contaJuridica = contaJuridica;
@@ -28,43 +31,43 @@ public class Loja {
         this.listaDeVendas = listaDeVendas;
     }
 
-    public String getListaAutomoveis() {
+    public ArrayList<Automovel> getListaAutomoveis() {
         return listaAutomoveis;
     }
 
-    public void setListaAutomoveis(String listaAutomoveis) {
+    public void setListaAutomoveis(ArrayList<Automovel> listaAutomoveis) {
         this.listaAutomoveis = listaAutomoveis;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    public String getContaJuridica() {
+    public ContaJuridica getContaJuridica() {
         return contaJuridica;
     }
 
-    public void setContaJuridica(String contaJuridica) {
+    public void setContaJuridica(ContaJuridica contaJuridica) {
         this.contaJuridica = contaJuridica;
     }
 
-    public String getListaClientes() {
+    public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
 
-    public void setListaClientes(String listaClientes) {
+    public void setListaClientes(ArrayList<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
 
-    public String getListaDeVendas() {
+    public ArrayList<Venda> getListaDeVendas() {
         return listaDeVendas;
     }
 
-    public void setListaDeVendas(String listaDeVendas) {
+    public void setListaDeVendas(ArrayList<Venda> listaDeVendas) {
         this.listaDeVendas = listaDeVendas;
     }
    
