@@ -5,6 +5,8 @@
  */
 package lojaDeAutomoveis;
 
+import banco.ContaFisica;
+
 /**
  *
  * @author JAVA
@@ -13,7 +15,7 @@ public class Vendedor extends Pessoa{
     
     private String commisao;
 
-    public Vendedor(String commisao, String nome, String cidade, String sexo, String cpf, Endereco endereco, String contaFisica) {
+    public Vendedor(String commisao, String nome, String cidade, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
         super(nome, cidade, sexo, cpf, endereco, contaFisica);
         this.commisao = commisao;
     }
