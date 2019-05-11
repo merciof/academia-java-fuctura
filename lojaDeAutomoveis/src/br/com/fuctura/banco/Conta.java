@@ -49,10 +49,14 @@ public class Conta {
     
     public void depositar(double valor) {
         this.saldo = this.saldo + valor;
+        
+        System.out.println("depositado: " + valor);
     }
     
     public void retirar(double valor) {
         this.saldo = this.saldo - valor;
+        
+        System.out.println("retirado: " + valor);
     }
     
     

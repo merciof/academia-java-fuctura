@@ -5,7 +5,7 @@
  */
 package br.com.fuctura.loja;
 
-import banco.ContaFisica;
+import br.com.fuctura.banco.ContaFisica;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Pessoa {
     private Endereco endereco;
     private ContaFisica contaFisica;
 
-    public Pessoa(String nome, String cidade, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
+    public Pessoa(String nome, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
         this.nome = nome;
         this.sexo = sexo;
         this.cpf = cpf;

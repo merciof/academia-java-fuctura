@@ -5,7 +5,7 @@
  */
 package br.com.fuctura.loja;
 
-import banco.ContaFisica;
+import br.com.fuctura.banco.ContaFisica;
 
 /**
  *
@@ -15,8 +15,8 @@ public class Vendedor extends Pessoa{
     
     private String matricula;
 
-    public Vendedor(String matricula, String nome, String cidade, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
-        super(nome, cidade, sexo, cpf, endereco, contaFisica);
+    public Vendedor(String nome, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica, String matricula) {
+        super(nome, sexo, cpf, endereco, contaFisica);
         this.matricula = matricula;
     }
 

@@ -52,7 +52,7 @@ class Venda {
         //depositar 90% do valor do automovel na contaJuridica da loja
         //depositar 10% do valod do automovel na contaFisica do vendedor
         //depositar a diferença, caso o vendedor consiga vender mais caro, na contaFisica do vendedor
-        //contaJuridica
+        //remover o automovel da lista da loja
         
         double valorProposta;
         double precoProposta = 0;
@@ -69,15 +69,17 @@ class Venda {
         precoAutomovel = this.cliente.getProposta().getAutomovel().getPreco();
         
             
-        dinheiroLoja = (precoAutomovel - desconto) * 0.9; 
+        dinheiroLoja = (precoAutomovel - desconto) * (1 - comissao); 
         
-        dinheiroVendedor = (valorProposta - precoAutomovel - desconto) + 0.1 * precoAutomovel;
+        dinheiroVendedor = (valorProposta - precoAutomovel - desconto) + comissao * precoAutomovel;
         
         this.cliente.getContaFisica().retirar(dinheiroLoja + dinheiroVendedor);
         
         this.vendedor.getContaFisica().depositar(dinheiroVendedor);
         
         loja.getContaJuridica().depositar(dinheiroVendedor);
+        
+        System.out.println("Venda executada.");
         
     }
 }

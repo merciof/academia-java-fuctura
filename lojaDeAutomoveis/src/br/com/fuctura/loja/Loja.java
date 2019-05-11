@@ -5,7 +5,7 @@
  */
 package br.com.fuctura.loja;
 
-import banco.ContaJuridica;
+import br.com.fuctura.banco.ContaJuridica;
 import java.util.ArrayList;
 
 /**

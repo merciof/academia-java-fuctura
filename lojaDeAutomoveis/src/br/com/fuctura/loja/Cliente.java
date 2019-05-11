@@ -5,7 +5,7 @@
  */
 package br.com.fuctura.loja;
 
-import banco.ContaFisica;
+import br.com.fuctura.banco.ContaFisica;
 
 /**
  *
@@ -14,8 +14,8 @@ import banco.ContaFisica;
 public class Cliente extends Pessoa{
     private Proposta proposta;
 
-    public Cliente(Proposta proposta, String nome, String cidade, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
-        super(nome, cidade, sexo, cpf, endereco, contaFisica);
+    public Cliente(Proposta proposta, String nome, String sexo, String cpf, Endereco endereco, ContaFisica contaFisica) {
+        super(nome, sexo, cpf, endereco, contaFisica);
         this.proposta = proposta;
     }
 
