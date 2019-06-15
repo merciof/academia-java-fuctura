@@ -10,6 +10,7 @@ package entidades;
  * @author JAVA
  */
 public class Conta {
+    private int id_conta;
     private int numero;
     private double saldo;
     private double limite;
@@ -22,6 +23,16 @@ public class Conta {
 
     public Conta() {
     }
+
+    public int getId_conta() {
+        return id_conta;
+    }
+
+    public void setId_conta(int id_conta) {
+        this.id_conta = id_conta;
+    }
+    
+    
  
     public int getNumero() {
         return numero;
