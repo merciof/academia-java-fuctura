@@ -11,21 +11,30 @@ package entidades;
  */
 public class Endereco {
     
+    private int id_endereco;
     private String logradouro;
     private String cidade;
     private Integer numero;
     private String estado;
 
-    public Endereco(String logradouro, String cidade, Integer numero, String estado) {
+    public Endereco(String logradouro, String cidade, Integer numero) {
         this.logradouro = logradouro;
         this.cidade = cidade;
         this.numero = numero;
-        this.estado = estado;
     }
 
     public Endereco() {
     }
 
+    public int getId_endereco() {
+        return id_endereco;
+    }
+
+    public void setId_endereco(int id_endereco) {
+        this.id_endereco = id_endereco;
+    }
+    
+    
     public String getLogradouro() {
         return logradouro;
     }
