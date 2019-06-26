@@ -17,10 +17,12 @@ public class Endereco {
     private Integer numero;
     private String estado;
 
-    public Endereco(String logradouro, String cidade, Integer numero) {
+    public Endereco(int id_endereco, String logradouro, String cidade, Integer numero, String estado) {
+        this.id_endereco = id_endereco;
         this.logradouro = logradouro;
         this.cidade = cidade;
         this.numero = numero;
+        this.estado = estado;
     }
 
     public Endereco() {
