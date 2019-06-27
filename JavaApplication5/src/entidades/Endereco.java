@@ -17,8 +17,8 @@ public class Endereco {
     private Integer numero;
     private String estado;
 
-    public Endereco(int id_endereco, String logradouro, String cidade, Integer numero, String estado) {
-        this.id_endereco = id_endereco;
+    public Endereco(String logradouro, String cidade, Integer numero, String estado) {
+        //this.id_endereco = id_endereco;
         this.logradouro = logradouro;
         this.cidade = cidade;
         this.numero = numero;
