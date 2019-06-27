@@ -36,10 +36,10 @@ public class Conexao {
             connection = ds.getConnection(user, password);
      
         } catch (SQLException e) {
-            
+            System.out.println("Erro ao tentar realizar conexao com o banco: " + e.getMessage());
         }
 
-        System.out.println("banco conectado");
+        //System.out.println("banco conectado");
         return connection;
 
     }
