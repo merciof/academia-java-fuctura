@@ -7,9 +7,11 @@ package dao.hibernate;
 
 import dao.interfaces.ContaDAO;
 import entidades.Conta;
+import entidades.Endereco;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,8 +37,6 @@ public class ContaDAOImpl implements ContaDAO {
         } catch (Exception e) {
             System.out.println("Erro ao tentar inserir conta: " + e.getMessage());
         }
-        
-       
     }
 
     @Override
@@ -45,18 +45,32 @@ public class ContaDAOImpl implements ContaDAO {
     }
 
     @Override
-    public void atualizar(String sql) {
+    public void atualizar(Conta conta) {
+            et = em.getTransaction();
+            et.begin();
+            em.merge(conta);
+            et.commit();
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Conta selecionar(int idConta) {
+        Endereco endereco = new Endereco();
+        try {
+            endereco = em.find(Endereco.class, idConta);
+        } catch (Exception e) {
+            
+        }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Conta> listarEndereco() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Query query = em.createQuery("from Conta c");
+        List<Conta> listar = query.getResultList();
+        em.close();
+        return listar;
+        
     }
         
 }
