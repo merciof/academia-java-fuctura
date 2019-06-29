@@ -5,9 +5,13 @@
  */
 package entidades;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,7 +36,14 @@ public class Pessoa {
     private String idade;
     
     private String sexo;
+    
+    
+    @JoinColumn(name="ID_ENDERECO", referencedColumnName = "ID_ENDERECO")
+    @OneToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
+   
+    @JoinColumn(name="NUMERO_CONTA", referencedColumnName = "NUMERO")
+    @OneToMany(cascade = CascadeType.ALL)
     private Conta conta;
 
     public Conta getConta() {
