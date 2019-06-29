@@ -58,10 +58,10 @@ public class ContaDAOImpl implements ContaDAO {
         }
     }
     
-    public void atualizar(String sql) {
+    public void atualizar(Conta conta) {
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.executeUpdate();
+//            PreparedStatement ps = connection.prepareStatement(sql);
+//            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Erro ao tentar atualizar endereco: " + e.getMessage());
         } finally {
@@ -114,5 +114,4 @@ public class ContaDAOImpl implements ContaDAO {
         
         return retorno;
     }
-
 }
