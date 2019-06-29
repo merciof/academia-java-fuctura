@@ -15,7 +15,7 @@ import java.util.List;
 public interface ContaDAO {
     public void inserir(Conta conta);
     public void deletar(int idConta);
-    public void atualizar(String sql);
+    public void atualizar(Conta conta);
     public Conta selecionar(int idConta);
     public List<Conta> listarEndereco();   
 }
