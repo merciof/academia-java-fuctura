@@ -5,6 +5,7 @@
  */
 package dao.jdbc;
 
+import dao.interfaces.EnderecoDAO;
 import entidades.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ import util.Conexao;
  *
  * @author JAVA
  */
-public class EnderecoDAOImpl {
+public class EnderecoDAOImpl implements EnderecoDAO{
     
     Conexao conexao = new Conexao();
     Connection connection = conexao.getConnection();
@@ -68,13 +69,20 @@ public class EnderecoDAOImpl {
         }  
     }
     
-    public void selecionar(int idEndereco) {
+    public Endereco selecionar(int idEndereco) {
         String sql = "SELECT * FROM ENDERECO WHERE ID_ENDERECO = ?";
-        
+        Endereco endereco = new Endereco();
         try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
             
+            endereco.setCidade(rs.getString("COMPLEMENTO"));
+            endereco.setLogradouro(rs.getString("ID_ENDERECO"));
+            endereco.setNumero(rs.getInt("NUMERO"));
         } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
         }
+        return endereco;
     }
     
     public List<Endereco> listarEndereco() {
