@@ -5,15 +5,32 @@
  */
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author JAVA
  */
+@Entity
+@Table(name="PESSOA")
 public class Pessoa {
+    
+    @Id
+    @Column(name="ID_PESSOA")
     private int id_pessoa;
+    
+    @Column(name="NOME")
     private String nome;
+    
+    @Column(name="CPF")
     private String cpf;
+    
+    @Column(name="IDADE")
     private String idade;
+    
     private String sexo;
     private Endereco endereco;
     private Conta conta;

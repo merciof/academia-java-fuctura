@@ -5,14 +5,30 @@
  */
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author JAVA
  */
+@Entity
+@Table(name="CONTA")
 public class Conta {
+   
+    @Id
+    @Column(name="ID_PESSOA")
     private int id_conta;
+    
+    @Column(name="NUMERO")
     private int numero;
+    
+    @Column(name="SALDO")
     private double saldo;
+    
+    @Column(name="LIMITE")
     private double limite;
 
     public Conta(int numero, double saldo, double limite) {

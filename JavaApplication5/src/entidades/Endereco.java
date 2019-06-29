@@ -5,22 +5,41 @@
  */
 package entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author JAVA
  */
+@Entity
+@Table(name="endereco")
 public class Endereco {
     
+    @Id
+    @Column(name="ID_ENDERECO")
     private int id_endereco;
+    
+    @Column(name="RUA")
     private String logradouro;
+    
+    @Column(name="CIDADE")
     private String cidade;
+    
+    @Column(name="NUMERO")
     private Integer numero;
+    
+    @Column(name="ESTADO")
     private String estado;
 
-    public Endereco(String logradouro, String cidade, Integer numero) {
+    public Endereco(String logradouro, String cidade, Integer numero, String estado) {
+        //this.id_endereco = id_endereco;
         this.logradouro = logradouro;
         this.cidade = cidade;
         this.numero = numero;
+        this.estado = estado;
     }
 
     public Endereco() {
