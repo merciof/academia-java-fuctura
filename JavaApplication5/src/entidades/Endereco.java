@@ -7,7 +7,10 @@ package entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,6 +23,8 @@ public class Endereco {
     
     @Id
     @Column(name="ID_ENDERECO")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ENDERECO")
+    @SequenceGenerator(sequenceName = "S_ID_ENDERECO", name = "ENDERECO")
     private int id_endereco;
     
     @Column(name="RUA")
