@@ -6,6 +6,7 @@
 package dao.interfaces;
 
 import entidades.Conta;
+import entidades.Pessoa;
 import java.util.List;
 
 /**
@@ -14,8 +15,9 @@ import java.util.List;
  */
 public interface ContaDAO {
     public void inserir(Conta conta);
-    public void deletar(int idConta);
+   // public void deletar(int idConta);
+    public void deletar(Conta conta);
     public void atualizar(Conta conta);
     public Conta selecionar(int idConta);
-    public List<Conta> listarEndereco();   
+    public List<Conta> listarConta();   
 }
