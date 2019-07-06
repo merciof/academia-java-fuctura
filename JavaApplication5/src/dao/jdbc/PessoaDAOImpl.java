@@ -5,6 +5,7 @@
  */
 package dao.jdbc;
 
+import dao.interfaces.PessoaDAO;
 import entidades.Conta;
 import entidades.Endereco;
 import entidades.Pessoa;
@@ -19,27 +20,28 @@ import util.Conexao;
  *
  * @author JAVA
  */
-public class PessoaDAOImpl {
+public class PessoaDAOImpl implements PessoaDAO {
     Conexao conexao = new Conexao();
     Connection connection = conexao.getConnection();
     
+    @Override
     public void inserir(Pessoa pessoa) {
-        String sql = "INSERT INTO PESSOA (ID_PESSOA,NOME,CPF,IDADE,SEXO,ENDERECO,CONTA) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO PESSOA (NOME,CPF,IDADE,SEXO,ENDERECO,CONTA) VALUES(?,?,?,?,?,?,?)";
         
-        EnderecoDAOImpl endereco = new EnderecoDAOImpl();
-        ContaDAOImpl conta = new ContaDAOImpl();
+        EnderecoDAOImpl enderecoDAO = new EnderecoDAOImpl();
+        ContaDAOImpl contaDAO = new ContaDAOImpl();
         
-        endereco.inserir(pessoa.getEndereco());
-        conta.inserir(pessoa.getConta());
+        enderecoDAO.inserir(pessoa.getEndereco());
+        contaDAO.inserir(pessoa.getConta());
      
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, pessoa.getId_pessoa());
-            ps.setString(2, pessoa.getNome());
-            ps.setString(3, pessoa.getCpf());
-            ps.setString(4, pessoa.getIdade());
-            ps.setString(5, pessoa.getSexo());
-            ps.setInt(6, pessoa.getEndereco().getId_endereco());
+            //ps.setInt(1, pessoa.getId_pessoa());
+            ps.setString(1, pessoa.getNome());
+            ps.setString(2, pessoa.getCpf());
+            ps.setString(3, pessoa.getIdade());
+            ps.setString(4, pessoa.getSexo());
+            ps.setInt(5, pessoa.getEndereco().getId_endereco());
             ps.setInt(6, pessoa.getConta().getId_conta());
             ps.execute();
             System.out.println("Pessoa inserido com sucesso");
@@ -51,13 +53,14 @@ public class PessoaDAOImpl {
         } 
     }
     
-    public void deletar(int idPessoa) {
+    @Override
+    public void deletar(Pessoa pessoa) {
         
-        String sql = "DELETE FROM PESSOA WHERE ID_ENDERECO = ?";
+        String sql = "DELETE FROM PESSOA WHERE CPF = ?";
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, idPessoa);
+            ps.setString(1, pessoa.getCpf());
             ps.execute();
             System.out.println("Objeto do tipo Pessoa deletado com sucesso");
         } catch (Exception e) {
@@ -68,7 +71,9 @@ public class PessoaDAOImpl {
         }
     }
     
-    public void atualizar(String sql) {
+    @Override
+    public void atualizar(Pessoa pessoa) {
+        String sql = "";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
@@ -79,13 +84,36 @@ public class PessoaDAOImpl {
         }  
     }
     
-    public void selecionar(int idPessoa) {
-        String sql = "SELECT * FROM PESSOA WHERE ID_ENDERECO = ?";
-        
+    @Override
+    public Pessoa selecionar(String cpf) {
+        String sql = "SELECT * FROM PESSOA WHERE CPF = ?";
+         Endereco endereco = new Endereco();
+         Conta conta = new Conta();
+         Pessoa pessoa = new Pessoa();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, idPessoa);
-            ps.execute();
+            ps.setString(1, cpf);
+            ResultSet rs = ps.executeQuery();
+            
+               conta.setId_conta(rs.getInt("ID_CONTA"));
+               conta.setNumero(rs.getInt("NUMERO"));
+               conta.setSaldo(rs.getDouble("SALDO"));
+               conta.setLimite(rs.getDouble("LIMITE"));
+             
+               endereco.setId_endereco(rs.getInt("ID_ENDERECO"));
+               endereco.setLogradouro(rs.getString("LOGRADOURO"));
+               endereco.setCidade(rs.getString("CIDADE"));
+               endereco.setNumero(rs.getInt("NUMERO"));
+               endereco.setEstado(rs.getString("ESTADO"));
+               
+                pessoa.setNome(rs.getString("NOME"));
+                pessoa.setCpf(rs.getString("CPF"));
+                pessoa.setIdade(rs.getString("IDADE"));
+                pessoa.setSexo(rs.getString("SEXO"));
+                pessoa.setEndereco(endereco);
+                pessoa.setConta(conta);
+                   
+            
             System.out.println("Objeto selecionado com sucesso");
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
@@ -93,9 +121,12 @@ public class PessoaDAOImpl {
         } finally {
             conexao.closeConnection(connection);
         }
+        
+        return pessoa;
+        
     }
     
-    public List<Pessoa> listarEndereco() {
+    public List<Pessoa> listarPessoa() {
         String sql = "SELECT * FROM PESSOA";
         List<Pessoa> retorno = new ArrayList<Pessoa>();
         try {
@@ -123,6 +154,7 @@ public class PessoaDAOImpl {
                 pessoa.setIdade(rs.getString("IDADE"));
                 pessoa.setSexo(rs.getString("SEXO"));
                 pessoa.setEndereco(endereco);
+                pessoa.setConta(conta);
                 retorno.add(pessoa);    
     
             } 
