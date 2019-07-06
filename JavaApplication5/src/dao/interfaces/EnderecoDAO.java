@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface EnderecoDAO {
     public void inserir(Endereco endereco);
-    public void deletar(int idEndereco);
-    public void atualizar(String sql);
+    public void deletar(Endereco endereco);
+    public void atualizar(Endereco endereco);
     public Endereco selecionar(int idEndereco);
     public List<Endereco> listarEndereco(); 
 }
