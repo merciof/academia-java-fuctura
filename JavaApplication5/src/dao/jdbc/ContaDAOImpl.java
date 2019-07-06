@@ -60,9 +60,19 @@ public class ContaDAOImpl implements ContaDAO {
     }
     
     public void atualizar(Conta conta) {
+        
+//        UPDATE table_name
+//        SET column1 = value1, column2 = value2, ...
+//        WHERE condition;
+
+        String sql = "UPDATE CONTA SET ID_Conta = ?, NUMERO = ?, SALDO = ?, LIMITE = ? ";
         try {
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//            ps.executeUpdate();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, conta.getId_conta());
+            ps.setInt(2, conta.getNumero());
+            ps.setDouble(3, conta.getSaldo());
+            ps.setDouble(3, conta.getLimite());
+            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Erro ao tentar atualizar conta: " + e.getMessage());
         } finally {
