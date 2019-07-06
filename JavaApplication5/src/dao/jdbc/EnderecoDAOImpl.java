@@ -59,9 +59,16 @@ public class EnderecoDAOImpl implements EnderecoDAO{
     }
     
     public void atualizar(Endereco endereco) {
+        
+        String sql = "UPDATE CONTA SET ID_ENDERECO = ?, LOGRADOURO = ?, CIDADE = ?, NUMERO = ?, ESTADO = ? ";    
+        
         try {
-            String sql = "";
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, endereco.getId_endereco());
+            ps.setString(2, endereco.getLogradouro());
+            ps.setString(3, endereco.getCidade());
+            ps.setInt(4, endereco.getNumero());
+            ps.setString(3, endereco.getEstado());
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Erro ao tentar atualizar endereco: " + e.getMessage());
