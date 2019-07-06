@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import util.Conexao;
 import dao.interfaces.ContaDAO;
+import entidades.Pessoa;
 
 /**
  *
@@ -41,17 +42,17 @@ public class ContaDAOImpl implements ContaDAO {
         } 
     }
     
-    public void deletar(int idConta) {
+    public void deletar(Conta conta) {
         
-        String sql = "DELETE FROM CONTO WHERE ID_CONTA = ?";
+        String sql = "DELETE FROM CONTA WHERE ID_CONTA = ?";
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, idConta);
+            ps.setInt(1, conta.getId_conta());
             ps.execute();
-            System.out.println("Endereco deletado com sucesso");
+            System.out.println("Conta deletada com sucesso");
         } catch (Exception e) {
-            System.out.println("Erro ao tentar deletar endereco: " + e.getMessage());
+            System.out.println("Erro ao tentar deletar conta: " + e.getMessage());
             
         } finally {
             conexao.closeConnection(connection);
@@ -63,7 +64,7 @@ public class ContaDAOImpl implements ContaDAO {
 //            PreparedStatement ps = connection.prepareStatement(sql);
 //            ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Erro ao tentar atualizar endereco: " + e.getMessage());
+            System.out.println("Erro ao tentar atualizar conta: " + e.getMessage());
         } finally {
             conexao.closeConnection(connection);
         }  
@@ -75,6 +76,7 @@ public class ContaDAOImpl implements ContaDAO {
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, idConta);
             ResultSet rs = ps.executeQuery();
             conta.setId_conta(rs.getInt("ID_CONTA"));
             conta.setNumero(rs.getInt("NUMERO"));
@@ -90,7 +92,7 @@ public class ContaDAOImpl implements ContaDAO {
         return conta;
     }
     
-    public List<Conta> listarEndereco() {
+    public List<Conta> listarConta() {
         String sql = "SELECT * FROM CONTA";
         List<Conta> retorno = new ArrayList<Conta>();
         try {
