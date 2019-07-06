@@ -8,6 +8,7 @@ package dao.hibernate;
 import dao.interfaces.ContaDAO;
 import entidades.Conta;
 import entidades.Endereco;
+import entidades.Pessoa;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -40,8 +41,16 @@ public class ContaDAOImpl implements ContaDAO {
     }
 
     @Override
-    public void deletar(int idConta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(Conta conta) {
+        try {
+            et.begin();
+            em.remove(conta);
+            et.commit();
+        } catch (Exception e) {
+            System.out.println("Erro transação: " + e.getMessage());
+        } finally {
+            em.close();
+        }
     }
 
     @Override
@@ -50,7 +59,7 @@ public class ContaDAOImpl implements ContaDAO {
             et.begin();
             em.merge(conta);
             et.commit();
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
@@ -65,12 +74,12 @@ public class ContaDAOImpl implements ContaDAO {
     }
 
     @Override
-    public List<Conta> listarEndereco() {
+    public List<Conta> listarConta() {
         Query query = em.createQuery("from Conta c");
         List<Conta> listar = query.getResultList();
         em.close();
         return listar;
         
     }
-        
+       
 }
