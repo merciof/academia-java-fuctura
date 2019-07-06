@@ -22,13 +22,14 @@ import javax.persistence.Table;
 @Table(name="PESSOA")
 public class Pessoa {
     
-    @Id
-    @Column(name="ID_PESSOA")
-    private int id_pessoa;
+//    @Id
+//    @Column(name="ID_PESSOA")
+//    private int id_pessoa;
     
     @Column(name="NOME")
     private String nome;
     
+    @Id
     @Column(name="CPF")
     private String cpf;
     
@@ -39,39 +40,32 @@ public class Pessoa {
     
     
     @JoinColumn(name="ID_ENDERECO", referencedColumnName = "ID_ENDERECO")
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private Endereco endereco;
    
     @JoinColumn(name="NUMERO_CONTA", referencedColumnName = "NUMERO")
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private Conta conta;
 
-    public Conta getConta() {
-        return conta;
-    }
-
-    public void setConta(Conta conta) {
-        this.conta = conta;
-    }
-
-    public Pessoa(String nome, String cpf, String idade, String sexo, Endereco endereco) {
+    public Pessoa(String nome, String cpf, String idade, String sexo, Endereco endereco, Conta conta) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.sexo = sexo;
         this.endereco = endereco;
+        this.conta = conta;
     }
 
     public Pessoa() {
     }
 
-    public int getId_pessoa() {
-        return id_pessoa;
-    }
-
-    public void setId_pessoa(int id_pessoa) {
-        this.id_pessoa = id_pessoa;
-    }
+//    public int getId_pessoa() {
+//        return id_pessoa;
+//    }
+//
+//    public void setId_pessoa(int id_pessoa) {
+//        this.id_pessoa = id_pessoa;
+//    }
     
     
     public String getNome() {
@@ -112,6 +106,14 @@ public class Pessoa {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+    
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
     
 }
