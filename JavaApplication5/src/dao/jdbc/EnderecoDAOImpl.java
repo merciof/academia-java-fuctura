@@ -41,13 +41,13 @@ public class EnderecoDAOImpl implements EnderecoDAO{
         } 
     }
     
-    public void deletar(int idEndereco) {
+    public void deletar(Endereco endereco) {
         
         String sql = "DELETE FROM ENDERECO WHERE ID_ENDERECO = ?";
         
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, idEndereco);
+            ps.setInt(1, endereco.getId_endereco());
             ps.execute();
             System.out.println("Endereco deletado com sucesso");
         } catch (Exception e) {
@@ -58,8 +58,9 @@ public class EnderecoDAOImpl implements EnderecoDAO{
         }
     }
     
-    public void atualizar(String sql) {
+    public void atualizar(Endereco endereco) {
         try {
+            String sql = "";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
         } catch (Exception e) {
