@@ -21,7 +21,7 @@ import javax.persistence.Table;
 public class Conta {
    
     @Id
-    @Column(name="ID_PESSOA")
+    @Column(name="ID_CONTA")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_conta;
     
