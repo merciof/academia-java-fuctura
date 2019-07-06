@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface PessoaDAO {
     public void inserir(Pessoa pessoa);
-    public void deletar(int idPessoa);
-    public void atualizar(String sql);
-    public Pessoa selecionar(int idPessoa);
-    public List<Pessoa> listarEndereco();
+    public void deletar(Pessoa pessoa);
+    public void atualizar(Pessoa pessoa);
+    public Pessoa selecionar(String cpf);
+    public List<Pessoa> listarPessoa();
 }
