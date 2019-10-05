@@ -23,12 +23,13 @@
 			</p:selectOneMenu>
 
 			<!-- <p:inputText id="usuario" /> -->
+
 			<h:outputLabel value="Título" />
-			<p:inputText id="titulo" />
+			<p:inputText id="titulo" value="#{PerguntaBean.pergunta.titulo}" />
 			<h:outputLabel value="Descrição" />
-			<p:inputTextarea rows="10" cols="50" id="descricao" />
+			<p:inputTextarea rows="10" cols="50" id="descricao" value="#{PerguntaBean.pergunta.descricao}" />
 			<h:outputLabel value="Status" />
-			<p:selectOneRadio id="status">
+			<p:selectOneRadio id="status" value="#{PerguntaBean.pergunta.status}">
 				<f:selectItem itemLabel="Ativo" itemValue="ativo" />
 				<f:selectItem itemLabel="Inativo" itemValue="inativo" />
 			</p:selectOneRadio>
