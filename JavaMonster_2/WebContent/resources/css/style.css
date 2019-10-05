@@ -1,0 +1,19 @@
+img {
+	float: left;
+}
+
+h3 {
+	float: left;
+}
+
+.container {
+	clear: both;
+}
+
+.title {
+	padding: 0 90px;
+}
+
+label {
+	font-weight: bold;
+}
