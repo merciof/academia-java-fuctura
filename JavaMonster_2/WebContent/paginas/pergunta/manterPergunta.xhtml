@@ -17,6 +17,13 @@
 	<div class="container">
 		<p:panelGrid columns="1">
 			<h:outputLabel value="Usuário" />
+			
+			<p:selectOneMenu>
+				<f:selectItem itemLabel="Seu Usuario" itemValue=""/>
+				<f:selectItems value="#{PerguntaBean.listUsuario}" var="usuario" 
+				itemLabel="#{usuario.nome}" itemValue="#{usuario.cpf}"/>
+				
+			</p:selectOneMenu>
 
 			<p:selectOneMenu>
 				<f:selectItem itemLabel="Seu Usuario" itemValue=" " />
@@ -29,9 +36,9 @@
 			<h:outputLabel value="Descrição" />
 			<p:inputTextarea rows="10" cols="50" id="descricao" value="#{PerguntaBean.pergunta.descricao}" />
 			<h:outputLabel value="Status" />
-			<p:selectOneRadio id="status" value="#{PerguntaBean.pergunta.status}">
-				<f:selectItem itemLabel="Ativo" itemValue="ativo" />
-				<f:selectItem itemLabel="Inativo" itemValue="inativo" />
+			<p:selectOneRadio id="status" value="#{PerguntaBean.pergunta.ativo}">
+				<f:selectItem itemLabel="Ativo" itemValue="S" />
+				<f:selectItem itemLabel="Inativo" itemValue="N" />
 			</p:selectOneRadio>
 			<p:button value="Enviar"></p:button>
 		</p:panelGrid>
